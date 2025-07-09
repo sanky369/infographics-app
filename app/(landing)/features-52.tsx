@@ -32,8 +32,8 @@ export default function FeaturesSection52() {
                     </div>
                     <div className="border-border/50 relative rounded-3xl border p-3 lg:col-span-3">
                         <div className="bg-linear-to-b aspect-76/59 relative rounded-2xl from-zinc-300 to-transparent p-px dark:from-zinc-700">
-                            <Image src="/payments.png" className="hidden rounded-[15px] dark:block" alt="payments illustration dark" width={1207} height={929} />
-                            <Image src="/payments-light.png" className="rounded-[15px] shadow dark:hidden" alt="payments illustration light" width={1207} height={929} />
+                            <Image src="/payments.png" className="hidden rounded-[15px] dark:block w-full h-auto" alt="payments illustration dark" width={1207} height={929} />
+                            <Image src="/payments-light.png" className="rounded-[15px] shadow dark:hidden w-full h-auto" alt="payments illustration light" width={1207} height={929} />
                         </div>
                     </div>
                 </div>

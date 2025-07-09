@@ -1,5 +1,5 @@
 import Image from "next/image";
-import HeroSection from "./hero-section-two";
+import HeroSection from "./hero-section";
 import FeaturesOne from "./features-one";
 import FeaturesSection5 from "./features-5";
 import FeaturesSection5Mirror from "./features-5-mirror";
