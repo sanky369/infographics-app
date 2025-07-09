@@ -1,12 +1,15 @@
 'use client'
 import Link from 'next/link'
 import { Logo } from '@/components/logo'
-import { Menu, X } from 'lucide-react'
+import { Loader2, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import React from 'react'
 import { cn } from '@/lib/utils'
-import { Authenticated, Unauthenticated } from "convex/react"
-import { SignInButton, UserButton } from "@clerk/nextjs"
+
+import { Authenticated, Unauthenticated, AuthLoading } from "convex/react";
+import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+
+
 
 const menuItems = [
     { name: 'Features', href: '#link' },
@@ -78,25 +81,55 @@ export const HeroHeader = () => {
                                     ))}
                                 </ul>
                             </div>
-                            {/* Auth Buttons Start */}
-                            <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit items-center">
+                            <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
+                                <AuthLoading>
+                                    <div className="flex items-center justify-center">
+                                        <Loader2 className="size-8 p-2 animate-spin" />
+                                    </div>
+                                </AuthLoading>
                                 <Authenticated>
                                     <Button asChild size="sm">
                                         <Link href="/dashboard">
                                             <span>Dashboard</span>
                                         </Link>
                                     </Button>
-                                    <UserButton afterSignOutUrl="/" />
+                                    <UserButton />
                                 </Authenticated>
+
                                 <Unauthenticated>
                                     <SignInButton mode="modal">
-                                        <Button size="sm" variant="outline">
-                                            Sign In
+                                        <Button
+                                            asChild
+                                            variant="outline"
+                                            size="sm"
+                                            className={cn(isScrolled && 'lg:hidden')}>
+                                            <Link href="#">
+                                                <span>Login</span>
+                                            </Link>
                                         </Button>
                                     </SignInButton>
+                                    <SignUpButton mode="modal">
+                                        <Button
+                                            asChild
+                                            size="sm"
+                                            className={cn(isScrolled && 'lg:hidden')}>
+                                            <Link href="#">
+                                                <span>Sign Up</span>
+                                            </Link>
+                                        </Button>
+                                    </SignUpButton>
+                                    <SignUpButton mode="modal">
+                                        <Button
+                                            asChild
+                                            size="sm"
+                                            className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
+                                            <Link href="#">
+                                                <span>Get Started</span>
+                                            </Link>
+                                        </Button>
+                                    </SignUpButton>
                                 </Unauthenticated>
                             </div>
-                            {/* Auth Buttons End */}
                         </div>
                     </div>
                 </div>
