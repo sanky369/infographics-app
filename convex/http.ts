@@ -3,6 +3,7 @@ import { httpAction } from "./_generated/server";
 import { internal } from "./_generated/api";
 import type { WebhookEvent } from "@clerk/backend";
 import { Webhook } from "svix";
+import { transformWebhookData } from "./paymentAttemptTypes";
 
 const http = httpRouter();
 
@@ -14,21 +15,32 @@ http.route({
     if (!event) {
       return new Response("Error occured", { status: 400 });
     }
-    switch (event.type) {
+    switch ((event as any).type) {
       case "user.created": // intentional fallthrough
       case "user.updated":
         await ctx.runMutation(internal.users.upsertFromClerk, {
-          data: event.data,
+          data: event.data as any,
         });
         break;
 
       case "user.deleted": {
-        const clerkUserId = event.data.id!;
+        const clerkUserId = (event.data as any).id!;
         await ctx.runMutation(internal.users.deleteFromClerk, { clerkUserId });
         break;
       }
+
+      case "paymentAttempt.updated": {
+        const paymentAttemptData = transformWebhookData((event as any).data);
+        await ctx.runMutation(internal.paymentAttempts.savePaymentAttempt, {
+          paymentAttemptData,
+        });
+        break;
+      }
+      
+
+      
       default:
-        console.log("Ignored Clerk webhook event", event.type);
+        console.log("Ignored webhook event", (event as any).type);
     }
 
     return new Response(null, { status: 200 });
