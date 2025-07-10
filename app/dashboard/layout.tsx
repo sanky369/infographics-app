@@ -1,5 +1,6 @@
 import { AppSidebar } from "@/app/dashboard/app-sidebar"
 import { SiteHeader } from "@/app/dashboard/site-header"
+import { LoadingBar } from "@/app/dashboard/loading-bar"
 import {
   SidebarInset,
   SidebarProvider,
@@ -18,9 +19,11 @@ export default function DashboardLayout({
           "--header-height": "calc(var(--spacing) * 12)",
         } as React.CSSProperties
       }
+      className="group/layout"
     >
       <AppSidebar variant="inset" />
       <SidebarInset>
+        <LoadingBar />
         <SiteHeader />
         <div className="flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">

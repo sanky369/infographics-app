@@ -1,7 +1,8 @@
 "use client"
 
 import { IconCirclePlusFilled, IconMail, type Icon } from "@tabler/icons-react"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
+import { useOptimistic, useTransition } from "react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -22,10 +23,20 @@ export function NavMain({
   }[]
 }) {
   const pathname = usePathname()
+  const router = useRouter()
+  const [optimisticPath, setOptimisticPath] = useOptimistic(pathname)
+  const [isPending, startTransition] = useTransition()
+
+  const handleNavigation = (url: string) => {
+    startTransition(() => {
+      setOptimisticPath(url)
+      router.push(url)
+    })
+  }
 
   return (
     <SidebarGroup>
-      <SidebarGroupContent className="flex flex-col gap-2">
+      <SidebarGroupContent className="flex flex-col gap-2" data-pending={isPending ? "" : undefined}>
         <SidebarMenu>
           {/* Just the quick create button */}
           <SidebarMenuItem className="flex items-center gap-2">
@@ -48,20 +59,18 @@ export function NavMain({
         </SidebarMenu>
         <SidebarMenu>
           {items.map((item) => {
-            // Display active page otherwise default to dashboard
-            const isActive = pathname === item.url || (pathname === '/dashboard' && item.url === '/dashboard')
+            // Use optimistic path for instant feedback
+            const isActive = optimisticPath === item.url || (optimisticPath === '/dashboard' && item.url === '/dashboard')
             
             return (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton 
                   tooltip={item.title}
-                  asChild
                   isActive={isActive}
+                  onClick={() => handleNavigation(item.url)}
                 >
-                  <a href={item.url}>
-                    {item.icon && <item.icon />}
-                    <span>{item.title}</span>
-                  </a>
+                  {item.icon && <item.icon />}
+                  <span>{item.title}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             )
