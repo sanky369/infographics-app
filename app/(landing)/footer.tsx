@@ -1,4 +1,4 @@
-import { Logo } from '@/components/logo'
+import { ChatMaxingIconColoured } from '@/components/logo'
 import Link from 'next/link'
 
 const links = [
@@ -35,8 +35,9 @@ export default function FooterSection() {
                 <Link
                     href="/"
                     aria-label="go home"
-                    className="mx-auto block size-fit">
-                    <Logo />
+                    className="flex mx-auto gap-2 items-center size-fit">
+                    <ChatMaxingIconColoured />
+                    <span className="text-xl font-medium">Starter.diy</span>
                 </Link>
 
                 <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">

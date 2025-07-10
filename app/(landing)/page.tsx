@@ -5,21 +5,21 @@ import FeaturesSection5 from "./features-5";
 import FeaturesSection5Mirror from "./features-5-mirror";
 import FeaturesSection52 from "./features-52";
 import Testimonials from "./testimonials";
-import Pricing from "./pricing-section-two";
 import CallToAction from "./call-to-action";
 import FAQs from "./faqs";
 import Footer from "./footer";
+import CustomClerkPricing from "./custom-clerk-pricing";
 
 export default function Home() {
   return (
     <div>
       <HeroSection />
-      <FeaturesSection5 />
+      {/* <FeaturesSection5 />
       <FeaturesSection5Mirror />
-      <FeaturesSection52 />
+      <FeaturesSection52 /> */}
       <FeaturesOne />
+      <CustomClerkPricing />
       <Testimonials />
-      <Pricing />
       <CallToAction />
       <FAQs />
       <Footer />

@@ -3,10 +3,10 @@ import { Table } from './table'
 
 export default function FeaturesOne() {
     return (
-        <section>
-            <div className="bg-muted/50 py-24">
+        <section className="py-16 md:py-32">
+            <div className=" py-24">
                 <div className="mx-auto w-full max-w-5xl px-6">
-                    <div>
+                    <div className="text-center">
                         <h2 className="text-foreground text-4xl font-semibold">Effortless Task Management</h2>
                         <p className="text-muted-foreground mb-12 mt-4 text-balance text-lg">Automate your tasks and workflows by connecting your favorite tools like Notion, Todoist, and more. AI-powered scheduling helps you stay on track and adapt to changing priorities.</p>
                         <div className="bg-foreground/5 rounded-3xl p-6">
@@ -19,8 +19,7 @@ export default function FeaturesOne() {
                             <h3 className="text-foreground text-xl font-semibold">Marketing Campaigns</h3>
                             <p className="text-muted-foreground my-4 text-lg">Effortlessly plan and execute your marketing campaigns organized.</p>
                             <Card
-                                className="aspect-video overflow-hidden px-6"
-                                variant="soft">
+                                className="aspect-video overflow-hidden px-6">
                                 <Card className="h-full translate-y-6" />
                             </Card>
                         </div>
@@ -28,8 +27,7 @@ export default function FeaturesOne() {
                             <h3 className="text-foreground text-xl font-semibold">AI Meeting Scheduler</h3>
                             <p className="text-muted-foreground my-4 text-lg">Effortlessly book and manage your meetings. Stay on top of your schedule.</p>
                             <Card
-                                className="aspect-video overflow-hidden"
-                                variant="soft">
+                                className="aspect-video overflow-hidden">
                                 <Card className="translate-6 h-full" />
                             </Card>
                         </div>
