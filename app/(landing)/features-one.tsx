@@ -1,5 +1,8 @@
 import { Card } from '@/components/ui/card'
 import { Table } from './table'
+import { CpuArchitecture } from './cpu-architecture'
+import { AnimatedListCustom } from './animated-list-custom'
+  
 
 export default function FeaturesOne() {
     return (
@@ -20,7 +23,9 @@ export default function FeaturesOne() {
                             <p className="text-muted-foreground my-4 text-lg">Effortlessly plan and execute your marketing campaigns organized.</p>
                             <Card
                                 className="aspect-video overflow-hidden px-6">
-                                <Card className="h-full translate-y-6" />
+                                <Card className="h-full translate-y-6 rounded-b-none border-b-0 bg-muted/50">
+                                    <CpuArchitecture />
+                                </Card>
                             </Card>
                         </div>
                         <div>
@@ -28,7 +33,9 @@ export default function FeaturesOne() {
                             <p className="text-muted-foreground my-4 text-lg">Effortlessly book and manage your meetings. Stay on top of your schedule.</p>
                             <Card
                                 className="aspect-video overflow-hidden">
-                                <Card className="translate-6 h-full" />
+                                <Card className="translate-6 h-full rounded-bl-none border-b-0 border-r-0 bg-muted/50 pt-6 pb-0">
+                                    <AnimatedListCustom />
+                                </Card>
                             </Card>
                         </div>
                     </div>
