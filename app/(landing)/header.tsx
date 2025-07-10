@@ -9,6 +9,9 @@ import { cn } from '@/lib/utils'
 import { Authenticated, Unauthenticated, AuthLoading } from "convex/react";
 import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 
+import { dark } from '@clerk/themes'
+import { useTheme } from "next-themes"
+
 
 
 const menuItems = [
@@ -21,6 +24,11 @@ const menuItems = [
 export const HeroHeader = () => {
     const [menuState, setMenuState] = React.useState(false)
     const [isScrolled, setIsScrolled] = React.useState(false)
+    const { theme } = useTheme()
+
+    const appearance = {
+        baseTheme: theme === "dark" ? dark : undefined,
+    }
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -94,7 +102,7 @@ export const HeroHeader = () => {
                                             <span>Dashboard</span>
                                         </Link>
                                     </Button>
-                                    <UserButton />
+                                    <UserButton appearance={appearance} />
                                 </Authenticated>
 
                                 <Unauthenticated>
