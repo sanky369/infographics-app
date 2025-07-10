@@ -1,6 +1,7 @@
 "use client"
 
 import { IconCirclePlusFilled, IconMail, type Icon } from "@tabler/icons-react"
+import { usePathname } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -20,10 +21,13 @@ export function NavMain({
     icon?: Icon
   }[]
 }) {
+  const pathname = usePathname()
+
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
         <SidebarMenu>
+          {/* Just the quick create button */}
           <SidebarMenuItem className="flex items-center gap-2">
             <SidebarMenuButton
               tooltip="Quick Create"
@@ -43,14 +47,25 @@ export function NavMain({
           </SidebarMenuItem>
         </SidebarMenu>
         <SidebarMenu>
-          {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}>
-                {item.icon && <item.icon />}
-                <span>{item.title}</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
+          {items.map((item) => {
+            // Display active page otherwise default to dashboard
+            const isActive = pathname === item.url || (pathname === '/dashboard' && item.url === '/dashboard')
+            
+            return (
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton 
+                  tooltip={item.title}
+                  asChild
+                  isActive={isActive}
+                >
+                  <a href={item.url}>
+                    {item.icon && <item.icon />}
+                    <span>{item.title}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            )
+          })}
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
