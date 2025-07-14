@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ChatMaxingIconColoured } from '@/components/logo'
 import { Loader2, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import React from 'react'
 import { cn } from '@/lib/utils'
 
@@ -51,6 +52,7 @@ export const HeroHeader = () => {
                                 className="flex items-center space-x-2">
                                 <ChatMaxingIconColoured />
                                 <span className="text-xl font-medium">Starter.diy</span>
+                                <Badge variant="outline" className="text-muted-foreground  text-xs">Demo</Badge>
                             </Link>
 
                             <button

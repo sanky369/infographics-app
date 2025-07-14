@@ -6,7 +6,6 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
-  Label,
   LabelList,
   Line,
   LineChart,
@@ -38,7 +37,7 @@ export const description = "A collection of health charts."
 
 export default function AnalyticsPage() {
   return (
-    <div className="chart-wrapper mx-auto flex max-w-6xl flex-col gap-6 p-6 sm:p-8 lg:flex-row lg:items-start">
+    <div className="mr-auto flex max-w-6xl flex-wrap lg:flex-row lg:flex-nowrap gap-6 p-6 sm:p-8 ">
       <div className="grid w-full gap-6 lg:max-w-[22rem]">
         <Card
           className="lg:max-w-md" x-chunk="charts-01-chunk-0"
@@ -138,20 +137,6 @@ export default function AnalyticsPage() {
                   strokeDasharray="3 3"
                   strokeWidth={1}
                 >
-                  <Label
-                    position="insideBottomLeft"
-                    value="Average Steps"
-                    offset={10}
-                    fill="hsl(var(--foreground))"
-                  />
-                  <Label
-                    position="insideTopLeft"
-                    value="12,343"
-                    className="text-lg"
-                    fill="hsl(var(--foreground))"
-                    offset={10}
-                    startOffset={100}
-                  />
                 </ReferenceLine>
               </BarChart>
             </ChartContainer>

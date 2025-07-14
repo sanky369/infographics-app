@@ -1,8 +1,9 @@
 import { Protect } from '@clerk/nextjs'
+import { PricingTable } from '@clerk/nextjs'
 
-function TeamCard({blur}: {blur: boolean}) {
+function TeamCard() {
   return (
-    <div className={`px-4 lg:px-6 ${blur ? "blur-sm" : ""}`}>
+    <div className="px-4 lg:px-6">
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold">Team</h1>
@@ -22,10 +23,10 @@ function TeamCard({blur}: {blur: boolean}) {
 export default function TeamPage() {
   return (
     <Protect
-      plan="hobby"
-      fallback={<TeamCard blur={true} />}
+      plan="starter"
+      fallback={<PricingTable/>}
     >
-      <TeamCard blur={false} />
+      <TeamCard />
     </Protect>
   )
 } 
