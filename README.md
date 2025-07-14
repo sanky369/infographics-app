@@ -60,7 +60,7 @@ A modern, production-ready SaaS starter template for building full-stack applica
 ```bash
 # Download the template files to your project directory
 # Then navigate to your project directory and install dependencies
-npm install
+npm install #or pnpm / yarn / bun
 ```
 
 2. Set up your environment variables:
