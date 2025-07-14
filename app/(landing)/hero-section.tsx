@@ -55,8 +55,9 @@ export default function HeroSection() {
                                         <Image
                                             src="/hero-section-main-app-dark.png"
                                             alt="app screen"
-                                            width="2880"
-                                            height="1842"
+                                            width={2880}
+                                            height={1842}
+                                            priority
                                         />
                                     </div>
                                 </div>
