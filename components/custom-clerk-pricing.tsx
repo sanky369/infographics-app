@@ -8,7 +8,6 @@ export default function CustomClerkPricing() {
     return (
         <>
             <PricingTable
-                newSubscriptionRedirectUrl="/success"
                 appearance={{
                     baseTheme: theme === "dark" ? dark : undefined,
                     elements: {

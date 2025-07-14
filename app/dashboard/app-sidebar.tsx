@@ -51,16 +51,6 @@ const data = {
       url: "/dashboard/payment-gated",
       icon: IconSparkles,
     },
-    {
-      title: "AI Chat",
-      url: "/dashboard/chat",
-      icon: IconBrandOpenai,
-    },
-    {
-      title: "Usage",
-      url: "/dashboard/usage",
-      icon: IconChartBar,
-    },
   ],
   navSecondary: [
     {
