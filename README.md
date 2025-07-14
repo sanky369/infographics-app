@@ -57,7 +57,7 @@ A modern, production-ready SaaS starter template for building full-stack applica
 1. Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/yourusername/starter-diy.git
+git clone https://github.com/artem-lazarev/starter-diy.git
 cd starter-diy
 npm install
 ```
@@ -78,23 +78,31 @@ NEXT_PUBLIC_CONVEX_URL=your_convex_url_here
 # Clerk Authentication & Billing
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key_here
 CLERK_SECRET_KEY=your_clerk_secret_key_here
-CLERK_WEBHOOK_SECRET=your_clerk_webhook_secret_here
 
-# Optional: Clerk Frontend API URL
-NEXT_PUBLIC_CLERK_FRONTEND_API_URL=your_clerk_frontend_api_url
+# Clerk Frontend API URL
+NEXT_PUBLIC_CLERK_FRONTEND_API_URL=https://your-clerk-frontend-api-url.clerk.accounts.dev
 ```
 
-4. Initialize Convex:
+4. Set up Convex environment variables in your Convex dashboard:
+
+```bash
+# In Convex Dashboard Environment Variables
+CLERK_WEBHOOK_SECRET=whsec_your_webhook_secret_here
+NEXT_PUBLIC_CLERK_FRONTEND_API_URL=https://your-clerk-frontend-api-url.clerk.accounts.dev
+```
+
+5. Initialize Convex:
 
 ```bash
 npx convex dev
 ```
 
-5. Set up Clerk webhooks:
+6. Set up Clerk webhooks:
    - In your Clerk dashboard, configure webhook endpoint: `{your_domain}/api/convex/clerk-users-webhook`
    - Enable events: `user.created`, `user.updated`, `user.deleted`, `paymentAttempt.updated`
+   - The webhook secret is already configured in your Convex environment variables
 
-6. Configure Clerk Billing:
+7. Configure Clerk Billing:
    - Set up your pricing plans in Clerk dashboard
    - Configure payment methods and billing settings
 
@@ -200,17 +208,18 @@ paymentAttempts: {
 
 ## Environment Variables
 
-### Required for Production
+### Required for .env.local
 
 - `CONVEX_DEPLOYMENT` - Your Convex deployment URL
 - `NEXT_PUBLIC_CONVEX_URL` - Your Convex client URL
 - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` - Clerk publishable key
 - `CLERK_SECRET_KEY` - Clerk secret key
-- `CLERK_WEBHOOK_SECRET` - Clerk webhook secret
-
-### Optional
-
 - `NEXT_PUBLIC_CLERK_FRONTEND_API_URL` - Clerk frontend API URL
+
+### Required for Convex Dashboard
+
+- `CLERK_WEBHOOK_SECRET` - Clerk webhook secret (set in Convex dashboard)
+- `NEXT_PUBLIC_CLERK_FRONTEND_API_URL` - Clerk frontend API URL (set in Convex dashboard)
 
 ## Deployment
 
