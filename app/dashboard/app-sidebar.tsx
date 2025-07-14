@@ -6,6 +6,7 @@ import {
   IconChartBar,
   IconDashboard,
   IconDatabase,
+  IconMessageCircle,
   IconFileAi,
   IconFileDescription,
   IconFileWord,
@@ -17,6 +18,8 @@ import {
   IconSearch,
   IconSettings,
   IconUsers,
+  IconSparkles,
+  IconBrandOpenai,
 } from "@tabler/icons-react"
 
 import { NavDocuments } from "@/app/dashboard/nav-documents"
@@ -37,11 +40,6 @@ import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   navMain: [
     {
       title: "Dashboard",
@@ -49,23 +47,18 @@ const data = {
       icon: IconDashboard,
     },
     {
-      title: "Lifecycle",
-      url: "/dashboard/lifecycle",
-      icon: IconListDetails,
+      title: "Payment gated",
+      url: "/dashboard/payment-gated",
+      icon: IconSparkles,
     },
     {
-      title: "Projects",
-      url: "/dashboard/projects",
-      icon: IconFolder,
+      title: "AI Chat",
+      url: "/dashboard/chat",
+      icon: IconBrandOpenai,
     },
     {
-      title: "Team",
-      url: "/dashboard/team",
-      icon: IconUsers,
-    },
-    {
-      title: "Analytics",
-      url: "/dashboard/analytics",
+      title: "Usage",
+      url: "/dashboard/usage",
       icon: IconChartBar,
     },
   ],
@@ -130,7 +123,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   )

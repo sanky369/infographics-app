@@ -19,15 +19,7 @@ import { useClerk, useUser } from "@clerk/nextjs"
 import { dark } from '@clerk/themes'
 import { useTheme } from "next-themes"
 
-export function NavUser({
-  user,
-}: {
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
-}) {
+export function NavUser() {
   const { isMobile } = useSidebar()
   const { openUserProfile } = useClerk()
   const { theme } = useTheme()

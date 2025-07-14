@@ -1,8 +1,5 @@
-import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
-import { ModeToggle } from "@/components/mode-toggle"
-import { IconPlus } from "@tabler/icons-react"
 
 export function SiteHeader() {
   return (
@@ -14,14 +11,6 @@ export function SiteHeader() {
           className="mx-2 data-[orientation=vertical]:h-4"
         />
         <h1 className="text-base font-medium">Documents</h1>
-        <Button 
-          className="ml-auto"
-          variant="outline"
-          size="sm"
-        >
-          <IconPlus className="mr-2 h-4 w-4" />
-          Upgrade plan
-        </Button>
       </div>
     </header>
   )
