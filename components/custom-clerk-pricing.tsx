@@ -22,15 +22,6 @@ export default function CustomClerkPricing() {
                             fontSize: 36,
                             fontWeight: 800,  
                         },
-                        pricingTableCardFeatures: {
-                            backgroundColor: 'var(--color-background)'
-                        },
-                        pricingTableCardHeader: {
-                            backgroundColor: 'var(--color-background)'
-                        },
-                        pricingTableCardFooter: {
-                            backgroundColor: 'var(--color-background)'
-                        },
                         pricingTable: {
                             gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
                         },
