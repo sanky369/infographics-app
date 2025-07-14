@@ -16,7 +16,7 @@ function UpgradeCard() {
 }
 
 
-function TeamCard() {
+function FeaturesCard() {
   return (
     <div className="px-4 lg:px-6">
       <div className="flex flex-col gap-4">
@@ -41,7 +41,7 @@ export default function TeamPage() {
       condition={(has) => has({ plan: "starter" }) || has({ plan: "hobby" }) || has({ plan: "pro" })}
       fallback={<UpgradeCard/>}
     >
-      <TeamCard />
+      <FeaturesCard />
     </Protect>
   )
 } 
