@@ -18,7 +18,7 @@ A modern, production-ready SaaS starter template for building full-stack applica
 - ✨ **Custom Animations** - React Bits and Framer Motion effects
 - 🧩 **shadcn/ui Components** - Modern component library with Radix UI
 - 📊 **Interactive Dashboard** - Complete admin interface with charts
-- �� **Webhook Integration** - Automated user and payment sync
+- 🎯 **Webhook Integration** - Automated user and payment sync
 - 🚢 **Vercel Ready** - One-click deployment
 
 ## Tech Stack
@@ -29,7 +29,6 @@ A modern, production-ready SaaS starter template for building full-stack applica
 - **shadcn/ui** - Modern component library
 - **Radix UI** - Accessible component primitives
 - **Framer Motion** - Smooth animations and transitions
-- **Motion Primitives** - Advanced animation components
 - **Lucide React & Tabler Icons** - Beautiful icon libraries
 - **Recharts** - Data visualization components
 - **React Bits** - Custom animation components
@@ -55,11 +54,11 @@ A modern, production-ready SaaS starter template for building full-stack applica
 
 ### Installation
 
-1. Download and set up the starter template:
+1. Clone the repository and install dependencies:
 
 ```bash
-# Download the template files to your project directory
-# Then navigate to your project directory and install dependencies
+git clone https://github.com/artem-lazarev/starter-diy.git
+cd starter-diy
 npm install
 ```
 
@@ -80,30 +79,11 @@ NEXT_PUBLIC_CONVEX_URL=your_convex_url_here
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key_here
 CLERK_SECRET_KEY=your_clerk_secret_key_here
 
-# Clerk Frontend API URL (from JWT template - see step 5)
+# Clerk Frontend API URL
 NEXT_PUBLIC_CLERK_FRONTEND_API_URL=https://your-clerk-frontend-api-url.clerk.accounts.dev
-
-# Clerk Redirect URLs
-NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL=/dashboard
-NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL=/dashboard
-NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/dashboard
-NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/dashboard
 ```
 
-4. Initialize Convex:
-
-```bash
-npx convex dev
-```
-
-5. Set up Clerk JWT Template:
-   - Go to your Clerk dashboard
-   - Navigate to JWT Templates
-   - Create a new template with name "convex"
-   - Copy the Issuer URL - this becomes your `NEXT_PUBLIC_CLERK_FRONTEND_API_URL`
-   - Add this URL to both your `.env.local` and Convex environment variables
-
-6. Set up Convex environment variables in your Convex dashboard:
+4. Set up Convex environment variables in your Convex dashboard:
 
 ```bash
 # In Convex Dashboard Environment Variables
@@ -111,12 +91,18 @@ CLERK_WEBHOOK_SECRET=whsec_your_webhook_secret_here
 NEXT_PUBLIC_CLERK_FRONTEND_API_URL=https://your-clerk-frontend-api-url.clerk.accounts.dev
 ```
 
-7. Set up Clerk webhooks:
-   - In your Clerk dashboard, configure webhook endpoint: `{your_domain}/clerk-users-webhook`
-   - Enable events: `user.created`, `user.updated`, `user.deleted`, `paymentAttempt.updated`
-   - Copy the webhook signing secret to your Convex environment variables
+5. Initialize Convex:
 
-8. Configure Clerk Billing:
+```bash
+npx convex dev
+```
+
+6. Set up Clerk webhooks:
+   - In your Clerk dashboard, configure webhook endpoint: `{your_domain}/api/convex/clerk-users-webhook`
+   - Enable events: `user.created`, `user.updated`, `user.deleted`, `paymentAttempt.updated`
+   - The webhook secret is already configured in your Convex environment variables
+
+7. Configure Clerk Billing:
    - Set up your pricing plans in Clerk dashboard
    - Configure payment methods and billing settings
 
@@ -136,14 +122,13 @@ Your application will be available at `http://localhost:3000`.
 - `/` - Beautiful landing page with pricing
 - `/dashboard` - Protected user dashboard
 - `/dashboard/payment-gated` - Subscription-protected content
-- `/clerk-users-webhook` - Clerk webhook handler
+- `/api/convex/clerk-users-webhook` - Clerk webhook handler
 
 ### Authentication Flow
 - Seamless sign-up/sign-in with Clerk
 - Automatic user sync to Convex database
 - Protected routes with middleware
 - Social login support
-- Automatic redirects to dashboard after auth
 
 ### Payment Flow
 - Custom Clerk pricing table component
@@ -221,14 +206,6 @@ paymentAttempts: {
 - **Progressive Blur** - Modern blur effects
 - **Infinite Slider** - Continuous scrolling elements
 
-## Theme Customization
-
-The starter kit includes a fully customizable theme system. You can customize colors, typography, and components using:
-
-- **Theme Tools**: [tweakcn.com](https://tweakcn.com/editor/theme?tab=typography), [themux.vercel.app](https://themux.vercel.app/shadcn-themes), or [ui.jln.dev](https://ui.jln.dev/)
-- **Global CSS**: Modify `app/globals.css` for custom styling
-- **Component Themes**: Update individual component styles in `components/ui/`
-
 ## Environment Variables
 
 ### Required for .env.local
@@ -237,11 +214,7 @@ The starter kit includes a fully customizable theme system. You can customize co
 - `NEXT_PUBLIC_CONVEX_URL` - Your Convex client URL
 - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` - Clerk publishable key
 - `CLERK_SECRET_KEY` - Clerk secret key
-- `NEXT_PUBLIC_CLERK_FRONTEND_API_URL` - Clerk frontend API URL (from JWT template)
-- `NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL` - Redirect after sign in
-- `NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL` - Redirect after sign up
-- `NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL` - Fallback redirect for sign in
-- `NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL` - Fallback redirect for sign up
+- `NEXT_PUBLIC_CLERK_FRONTEND_API_URL` - Clerk frontend API URL
 
 ### Required for Convex Dashboard
 
